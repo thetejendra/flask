@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!-- ✅ Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Create Account</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="message">
+            {% for msg in messages %}
+            <p>{{ msg }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form name="regForm" method="POST" action="{{ url_for('register') }}">
+            <input type="text" name="username" placeholder="Enter username">
+            <input type="password" name="password" placeholder="Enter password">
+            <input type="submit" value="Register">
+        </form>
+        <a href="{{ url_for('login') }}">Already have an account? Login</a>
+    </div>
+</body>
+
+</html>
